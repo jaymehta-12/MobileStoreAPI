@@ -1,0 +1,35 @@
+Mobile Store Web Api.
+
+1.File- MobileItems.cs(Model)
+
+-In this model class I have mentioned the required properties for my Api.
+
+-Here in this model file parameter ID is set as primary key with the help of using DataAnnotations.
+
+2.File -MobileContext.cs
+-In this model class I have build an constructor for passing Dbprovider which can be SQLServer etc .
+
+- A property is also added with type DbSet for class MobileDetails.
+
+3.File-Startup.cs
+
+-In the file I have added service in ConfigurationService for dependency injection in my api by EF Core.
+
+-Main key word here is UseSqlServer and here connection string is accesed inside this by calling function GETConnectionString.
+
+4.File- Appsetting.json
+
+-Here in this I have added connection string and created a connection named as MobileStore with instance of SQL as sqlexpress.
+
+
+5-File- MobileItemController
+
+-First in this I have created a private property _context of type MobileContext(Model class).
+
+-Next is creating a constuctor which sets the property _context which is passed as a parameter.
+
+-Whenever we create a controller with constructor parameter of type MobileContext, property which is Iservice(In starup.cs file) will provide the new instance of MobileContext into the the constuctor parameter _context.
+
+-This is one the benift of ASP .NEt core as here dependency injection is implements by defualt.
+
+-Next is all the method for CRUD operations where return type is IActionResult used.
